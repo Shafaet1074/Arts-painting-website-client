@@ -14,6 +14,7 @@ import Add_Paintings from './Pages/AddPaintings/Add_Paintings';
 import MyArts from './Pages/MyArts/MyArts';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import FirebaseProvider from './Firebase/FirbeaseProvider/FirebaseProvider';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-<RouterProvider router={router} />
+   <FirebaseProvider>
+   <RouterProvider router={router} />
+   </FirebaseProvider>
   </React.StrictMode>,
 )

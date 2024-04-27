@@ -1,7 +1,27 @@
 import { Link } from 'react-router-dom';
 import img from '../../assets/4957136.jpg'
+import { useContext } from 'react';
+import { AuthContext } from '../../Firebase/FirbeaseProvider/FirebaseProvider';
 
 const Login = () => {
+
+	const {createUser} =useContext(AuthContext);
+
+	const handleLogin = e =>{
+		e.preventDefault();
+		const form=e.target;
+		const email=form.email.value;
+		const password=form.password.value;
+		console.log(email,password);
+		createUser(email,password)
+		.then(result =>{
+			console.log(result.user);
+		})
+		.catch(error=>{
+			console.error(error);
+		})
+
+	}
   return (
     <div className="flex gap-10 ">
         <div className="w-1/2">
@@ -11,7 +31,7 @@ const Login = () => {
         <div className='w-1/2 mt-20'>
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-violet-300 dark:text-gray-800">
 	<h1 className="text-2xl font-bold text-center">Login</h1>
-	<form noValidate="" action="" className="space-y-6">
+	<form   onSubmit={handleLogin}  noValidate="" action="" className="space-y-6">
 		<div className="space-y-1 text-sm">
 			<label htmlFor="username" className="block text-xl dark:text-gray-600">Email</label>
 			<input type="email" name="email" id="username" placeholder="Email" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
