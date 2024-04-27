@@ -15,6 +15,8 @@ import MyArts from './Pages/MyArts/MyArts';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import FirebaseProvider from './Firebase/FirbeaseProvider/FirebaseProvider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -57,5 +59,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
    <FirebaseProvider>
    <RouterProvider router={router} />
    </FirebaseProvider>
+   <ToastContainer />
   </React.StrictMode>,
 )
