@@ -10,13 +10,15 @@ import Root from './Layouts/Root/Root';
 import ErrorPages from './Components/ErrorPages';
 import Home from './Pages/Home/Home';
 import AllPaintings from './Pages/All Paintaings/AllPaintings';
-import Add_Paintings from './Pages/AddPaintings/Add_Paintings';
+
 import MyArts from './Pages/MyArts/MyArts';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import FirebaseProvider from './Firebase/FirbeaseProvider/FirebaseProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PrivsteRoute from './Components/PrivateRoute/PrivsteRoute';
+import AddPaintings from './Pages/AddPaintings/AddPaintings';
 
 const router = createBrowserRouter([
   {
@@ -35,11 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path:'/addPaintings',
-        element:<Add_Paintings></Add_Paintings>,
+        element: <PrivsteRoute><AddPaintings></AddPaintings></PrivsteRoute>,
       },
       {
         path:'/myArts',
-        element:<MyArts></MyArts>,
+        element:<PrivsteRoute><MyArts></MyArts></PrivsteRoute>,
       },
       {
         path:'/login',

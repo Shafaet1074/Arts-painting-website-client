@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Firebase/FirbeaseProvider/FirebaseProvider";
 
 
 const Navbar = () => {
+  const {LogOut,user} = useContext(AuthContext)
   return (
 <div className="navbar bg-violet-200 md:px-20  shadow-lg shadow-violet-500">
   <div className="navbar-start">
@@ -32,26 +35,34 @@ const Navbar = () => {
 
   <div className="navbar-end  gap-4">
 
-  <Link to='/login'><button className="btn btn-outline">Log In</button>  </Link>
-  <Link to='/Register'><button className="btn btn-outline">Register</button>  </Link>
+{ user ?
 
-  <div className="dropdown dropdown-hover">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-        </div>
-      </div>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>
+<div className="dropdown dropdown-hover">
+<div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+  <div className="w-10 rounded-full">
+    <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+  </div>
+</div>
+<ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+  <li>
+  <p>{user?.displayName}</p>
+  </li>
+  <button onClick={LogOut}> <li><a>Logout</a></li></button>
+</ul>
+</div>
+   :
+ 
+   <>
+   <Link to='/login'><button className="btn btn-outline btn-primary">Log IN</button>  </Link>
+  <Link to='/Register'><button className="btn btn-outline">Register</button>  </Link>
+  
+ </>
+
+
+
+ }
+
+
   </div>
 </div>
   );

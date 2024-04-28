@@ -1,11 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import img from '../../assets/141.jpg'
 import { useContext } from 'react';
 import { AuthContext } from '../../Firebase/FirbeaseProvider/FirebaseProvider';
 
+
 const Register = () => {
-	const {RegisterUser} =useContext(AuthContext);
+	const {RegisterUser,updateUserProfile} =useContext(AuthContext);
+	const navigate =useNavigate();
+	const location =useLocation();
+	const from= location?.state || "/";
 
 	const handleRegister = e =>{
 		e.preventDefault();
@@ -14,9 +18,17 @@ const Register = () => {
 		const password=e.target.Password.value;
 		const photoUrl=e.target.photoUrl.value;
 		const name=e.target.name.value;
+		
 		console.log(email,password,name,photoUrl);
 		RegisterUser(email,password)
 		.then(result =>{
+			updateUserProfile(FullName,Image)
+      
+      .then(()=>{
+
+      })
+      console.log(result.user);
+			navigate(from);  
 			toast.success('Register Done');
 		})
 		.catch(error=>{

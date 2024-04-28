@@ -1,6 +1,38 @@
-import img from '../../assets/note-png-file.png'
+import { useContext } from "react";
+import { AuthContext } from "../../Firebase/FirbeaseProvider/FirebaseProvider";
 
-const Add_Paintings = () => {
+
+const AddPaintings = () => {
+  const {user} =useContext(AuthContext) || {};
+  const handleAddPaintings=(e)=>{
+    e.preventDefault();
+    const paintingname=e.target.paintingname.value;
+    const SubcategoryName=e.target.SubcategoryName.value;
+    const price=e.target.price.value;
+    const Rating=e.target.Rating.value;
+    const Customization=e.target.Customization.value;
+ 
+    const ProcessingTime=e.target.ProcessingTime.value;
+   
+    const photo=e.target.photo.value;
+    const ShortDescription=e.target.ShortDescription.value;
+    const email=user.email;
+    const info={paintingname,SubcategoryName,price,Rating,Customization,ProcessingTime,photo,ShortDescription,email}
+    console.log(info);
+
+    fetch('http://localhost:5000/addpaintings',{
+      method: 'POST',
+      headers:{
+        'content-type' : 'application/json'
+      },
+      body:JSON.stringify(info)
+    })
+    .then(res=>res.json())
+    .then(data =>{
+      console.log(data);
+    })
+  }
+  
   return (
     // <div className="flex gap-5">
     //   <div className="w-2/6 p-10 my-auto">
@@ -11,7 +43,7 @@ const Add_Paintings = () => {
      <div className='p-20'>
        <div className="bg-[#c2beec] shadow-lg rounded-lg p-24 space-y-4 ">
       <h2 className="text-3xl font-extrabold">Add Paintings</h2>
-      <form>
+      <form onSubmit={handleAddPaintings}>
       {/* form name and quantity row */}
        <div className="md:flex md:gap-5 mb-8">
        <div className="md:w-1/2">
@@ -20,7 +52,7 @@ const Add_Paintings = () => {
         </label>
        <label className="flex items-center gap-2">
   
-  <input type="text" name="painting name" className="input input-bordered w-full " placeholder="PaintingName" />
+  <input type="text" name="paintingname" className="input input-bordered w-full " placeholder="PaintingName" />
 </label>
        </div>
        <div className="md:w-1/2">
@@ -29,7 +61,7 @@ const Add_Paintings = () => {
         </label>
        <label className="flex items-center gap-2">
   
-  <input type="text" name="SubcategoryName " className="input input-bordered w-full " placeholder="Subcategory Name" />
+  <input type="text" name="SubcategoryName" className="input input-bordered w-full " placeholder="Subcategory Name" />
 </label>
        </div>
        </div>
@@ -126,4 +158,4 @@ const Add_Paintings = () => {
   );
 };
 
-export default Add_Paintings;
+export default AddPaintings;

@@ -1,5 +1,5 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { createContext, useState } from "react";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 import auth from "../FirebaseConfig";
 import { toast } from "react-toastify";
 
@@ -43,13 +43,48 @@ const FirebaseProvider = ({children}) => {
         })
   }
 
+    //logout
+    const LogOut = () =>{
+
+      setUser(null)
+      
+      signOut(auth)
+      .then(()=>{
+        toast.success('log Out Done')
+      })
+    }
+
+     //Update User
+  const updateUserProfile =(name,image) =>{
+    return updateProfile(auth.currentUser,{
+      displayName: name,
+      photoURL: image
+    })
+  }
+
+      //Observer
+  useEffect(()=>{
+    const unsubscribe=onAuthStateChanged(auth, (user) => {
+      if (user) {
+         setUser(user)
+         
+      } 
+      setLoading(false);
+    });
+
+    return ()=> unsubscribe();
+    
+  },[])
+
   const userInfo={
     user,
     loading,
     RegisterUser,
     LoginUser,
     googleLogIn,
-    githubLogIn
+    githubLogIn,
+    LogOut,
+    updateUserProfile
   }
 
   return (
