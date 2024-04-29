@@ -161,7 +161,7 @@ const AddPaintings = () => {
        </div>
        
        
-       <input type="submit" value="Add Coffee"  className="btn btn-block bg-gray-500 text-white hover:bg-slate-700 hover:text-white mt-5"/>
+       <input type="submit" value="Add Paintings"  className="btn btn-block bg-gray-500 text-white hover:bg-slate-700 hover:text-white mt-5"/>
 
       </form>
     </div>
