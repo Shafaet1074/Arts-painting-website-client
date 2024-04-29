@@ -13,9 +13,10 @@ const Navbar = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </div>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
-        <li><a>Item 1</a></li>
-     
-        <li><a>Item 3</a></li>
+      <NavLink to='/' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl '}><li><a>Home</a></li></NavLink>
+    <NavLink  to='/allPaintaings' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl'}><li><a>All Paintings</a></li></NavLink>
+    <NavLink to='/addPaintings' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl'}><li><a>Add Paintings</a></li></NavLink>
+    <NavLink to='/myArts' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl'}><li><a>My Arts </a></li></NavLink>
       </ul>
     </div>
     <a className="btn  text-xl  text-black font-bold hover:text-black">ArtisanHaven</a>

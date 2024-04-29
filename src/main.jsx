@@ -20,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import PrivsteRoute from './Components/PrivateRoute/PrivsteRoute';
 import AddPaintings from './Pages/AddPaintings/AddPaintings';
 import AllPaintDetails from './Components/AllPaintings/AllPainDetails/AllPaintDetails';
+import UpdateCart from './Components/UpdateCart/UpdateCart';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
       {
         path:'/myArts',
         element:<PrivsteRoute><MyArts></MyArts></PrivsteRoute>,
+      },
+      {
+        path:'/myArts/:id',
+        element:<PrivsteRoute><UpdateCart></UpdateCart></PrivsteRoute>,
+
       },
       {
         path:'/login',

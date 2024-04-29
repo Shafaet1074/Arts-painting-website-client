@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Firebase/FirbeaseProvider/FirebaseProvider";
+import { Link } from "react-router-dom";
 
 
 
@@ -106,7 +107,7 @@ console.log(items);
             </div>
             <div className=" md:space-y-5 space-y-5 pt-2 text-white">
                
-               <button className="px-6 py-2 rounded-lg bg-violet-600 hover:bg-violet-800 w-full">Update</button>
+              <Link to={`/myArts/${item._id}`}> <button className="px-6 py-2 rounded-lg bg-violet-600 hover:bg-violet-800 w-full">Update</button></Link>
                <button className="px-6 py-2 rounded-lg bg-violet-600 hover:bg-violet-800 w-full">Delete</button>
               
                 

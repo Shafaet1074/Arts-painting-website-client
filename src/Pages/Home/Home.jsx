@@ -12,7 +12,7 @@ const Home = () => {
     <div id="slide1" className="carousel-item relative w-full  ">
       <img src={slide1} className="w-full opacity-4"  />
       
-      <div className='text-center text-xl md:text-4xl font-bold  text-white absolute z-index  md:top-40 md:right-10 md:left-10 '>
+      <div className='text-center text-2xl md:text-4xl font-bold  text-white absolute z-index  md:top-40 md:right-10 md:left-10 items-center'>
         <div className='text-center md:text-xl font-extralight text-slate-200'>
         <p>ArtisanHaven: "Where Creativity Blossoms"</p>
         </div>
@@ -28,7 +28,7 @@ const Home = () => {
     </div> 
     <div id="slide2" className="carousel-item relative  w-full">
       <img src={slide2} className="w-full  h-auto" />
-      <div className='text-center text-xl md:text-4xl font-bold  text-white absolute z-index  md:top-40 md:right-10 md:left-10'>
+      <div className='text-center text-2xl md:text-4xl font-bold  text-white absolute z-index  md:top-40 md:right-10 md:left-10'>
       <div className='text-center md:text-xl font-extralight text-slate-200'>
         <p>ArtisanHaven: "Where Creativity Blossoms"</p>
         </div>
@@ -42,8 +42,8 @@ const Home = () => {
     </div> 
     <div id="slide3" className="carousel-item relative w-full">
       <img src={slide3}className="w-full  h-auto" />
-      <div className='text-center text-xl md:text-4xl font-bold  text-black absolute z-index  md:top-40 md:right-10 md:left-10 '>
-      <div className='text-center md:text-xl font-extralight text-slate-200'>
+      <div className='text-center text-2xl md:text-4xl font-extrabold  text-black absolute z-index  md:top-40 md:right-10 md:left-10 '>
+      <div className='text-center md:text-xl font-bold text-white'>
         <p>ArtisanHaven: "Where Creativity Blossoms"</p>
         </div>
 
