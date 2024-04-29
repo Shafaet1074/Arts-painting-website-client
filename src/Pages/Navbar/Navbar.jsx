@@ -22,7 +22,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-    <NavLink to='/' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl'}><li><a>Home</a></li></NavLink>
+    <NavLink to='/' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl '}><li><a>Home</a></li></NavLink>
     <NavLink  to='/allPaintaings' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl'}><li><a>All Paintings</a></li></NavLink>
     <NavLink to='/addPaintings' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl'}><li><a>Add Paintings</a></li></NavLink>
     <NavLink to='/myArts' className={({isActive})=> isActive?'text-white font-bold border border-slate-700   text-xl rounded-lg bg-slate-700' : 'font-bold text-xl'}><li><a>My Arts </a></li></NavLink>

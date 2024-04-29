@@ -1,26 +1,30 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Firebase/FirbeaseProvider/FirebaseProvider";
+import { toast } from "react-toastify";
+
+import Swal from 'sweetalert2'
 
 
 const AddPaintings = () => {
   const {user} =useContext(AuthContext) || {};
   const handleAddPaintings=(e)=>{
     e.preventDefault();
-    const paintingname=e.target.paintingname.value;
-    const SubcategoryName=e.target.SubcategoryName.value;
-    const price=e.target.price.value;
-    const Rating=e.target.Rating.value;
-    const Customization=e.target.Customization.value;
+    const form=e.target
+    const paintingname=form.paintingname.value;
+    const SubcategoryName=form.SubcategoryName.value;
+    const price=form.price.value;
+    const Rating=form.Rating.value;
+    const Customization=form.Customization.value;
  
-    const ProcessingTime=e.target.ProcessingTime.value;
+    const ProcessingTime=form.ProcessingTime.value;
    
-    const photo=e.target.photo.value;
-    const ShortDescription=e.target.ShortDescription.value;
+    const photo=form.photo.value;
+    const ShortDescription=form.ShortDescription.value;
     const email=user.email;
     const info={paintingname,SubcategoryName,price,Rating,Customization,ProcessingTime,photo,ShortDescription,email}
     console.log(info);
 
-    fetch('http://localhost:5000/addpaintings',{
+    fetch('http://localhost:5003/addpaintings',{
       method: 'POST',
       headers:{
         'content-type' : 'application/json'
@@ -30,7 +34,17 @@ const AddPaintings = () => {
     .then(res=>res.json())
     .then(data =>{
       console.log(data);
+      if(data.insertedId){
+        Swal.fire({
+          
+          icon: "success",
+          title: "Success!",
+          showConfirmButton: "Cool",
+          text:"User Added Successfully"
+        });
+      }
     })
+    form.reset();
   }
   
   return (

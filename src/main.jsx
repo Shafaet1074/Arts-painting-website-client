@@ -19,6 +19,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PrivsteRoute from './Components/PrivateRoute/PrivsteRoute';
 import AddPaintings from './Pages/AddPaintings/AddPaintings';
+import AllPaintDetails from './Components/AllPaintings/AllPainDetails/AllPaintDetails';
 
 const router = createBrowserRouter([
   {
@@ -30,10 +31,19 @@ const router = createBrowserRouter([
         path:'/',
         element:<Home></Home>,
         errorElement:<ErrorPages></ErrorPages>,
+
       },
       {
         path:'/allPaintaings',
         element:<AllPaintings> </AllPaintings>,
+        loader: () => fetch('http://localhost:5003/addpaintings')
+      },
+      {
+        path:'/allPaintings/:id',
+        element:<PrivsteRoute>
+          <AllPaintDetails></AllPaintDetails>
+        </PrivsteRoute>
+          
       },
       {
         path:'/addPaintings',
