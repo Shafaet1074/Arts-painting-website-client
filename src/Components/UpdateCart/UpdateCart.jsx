@@ -50,7 +50,7 @@ const UpdateCart = () => {
           icon: "success",
           title: "Success!",
           showConfirmButton: "Cool",
-          text:"User Added Successfully"
+          text:"Painting updated Successfully"
         });
       }
     })

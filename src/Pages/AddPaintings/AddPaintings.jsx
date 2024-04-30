@@ -40,7 +40,7 @@ const AddPaintings = () => {
           icon: "success",
           title: "Success!",
           showConfirmButton: "Cool",
-          text:"User Added Successfully"
+          text:"Paintings Added Successfully"
         });
       }
     })

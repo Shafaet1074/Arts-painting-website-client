@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Firebase/FirbeaseProvider/FirebaseProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
@@ -8,6 +9,7 @@ import { Link } from "react-router-dom";
 const MyArts = () => {
   const {user} =useContext(AuthContext) || {};
   const [items,setItem] =useState();
+  const [control,setControl] =useState(false);
   const [sortedYesItems,setSortedYesitems] =useState(items);
   const [sortedNoItems,setSortedNoitems] =useState(items);
   console.log(user.email);
@@ -18,7 +20,7 @@ const MyArts = () => {
       setItem(data);
     })
   
-},[user])
+},[user,control])
 
 const handleYes= () => {
   const newYesItems =items.filter((item) => item.Customization === 'Yes')
@@ -40,7 +42,46 @@ const handleNo= () => {
       setItem(sortedNoItems);
 console.log(items);
 }
+ 
+const handleDelete = (id) =>{
 
+  
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+    
+      fetch(`http://localhost:5003/delete/${id}`,{
+    method:"DELETE",
+  })
+  .then((res)=> res.json())
+  .then((data)=>{
+    if(data.deletedCount> 0){
+      Swal.fire(
+        "Deleted!",
+        "Your coffee has been deleted.",
+        "success"
+)
+           setControl(!control)
+    }
+  })
+      console.log('Delete Confirmed');
+  
+    }
+  });
+
+
+
+
+
+
+}
 
 
 
@@ -108,7 +149,7 @@ console.log(items);
             <div className=" md:space-y-5 space-y-5 pt-2 text-white">
                
               <Link to={`/myArts/${item._id}`}> <button className="px-6 py-2 rounded-lg bg-violet-600 hover:bg-violet-800 w-full">Update</button></Link>
-               <button className="px-6 py-2 rounded-lg bg-violet-600 hover:bg-violet-800 w-full">Delete</button>
+               <button onClick={()=>handleDelete(item._id)} className="px-6 py-2 rounded-lg bg-violet-600 hover:bg-violet-800 w-full">Delete</button>
               
                 
               </div>
