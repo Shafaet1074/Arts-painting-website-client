@@ -32,6 +32,7 @@ const router = createBrowserRouter([
         path:'/',
         element:<Home></Home>,
         errorElement:<ErrorPages></ErrorPages>,
+        loader:() => fetch('http://localhost:5003/addpaintings')
 
       },
       {
