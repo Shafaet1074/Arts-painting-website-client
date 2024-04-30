@@ -57,6 +57,7 @@ const router = createBrowserRouter([
       {
         path:'/myArts/:id',
         element:<PrivsteRoute><UpdateCart></UpdateCart></PrivsteRoute>,
+        loader: ({params}) => fetch(`http://localhost:5003/myArts/${params.id}`)
 
       },
       {
