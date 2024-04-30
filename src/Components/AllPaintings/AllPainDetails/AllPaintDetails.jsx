@@ -6,8 +6,9 @@ const AllPaintDetails = () => {
   console.log(id);
   const [painting,setPainting] = useState ({});
 
+
   useEffect(() => {
-    fetch(`http://localhost:5003/allpaintings/${id}`)
+    fetch(`https://arts-painting-website-server.vercel.app/allpaintings/${id}`) 
     .then(res=> res.json())
     .then(data => {
       setPainting(data)

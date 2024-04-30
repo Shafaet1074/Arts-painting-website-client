@@ -32,13 +32,13 @@ const router = createBrowserRouter([
         path:'/',
         element:<Home></Home>,
         errorElement:<ErrorPages></ErrorPages>,
-        loader:() => fetch('http://localhost:5003/addpaintings')
+        loader:() => fetch('https://arts-painting-website-server.vercel.app/addpaintings')
 
       },
       {
         path:'/allPaintaings',
         element:<AllPaintings> </AllPaintings>,
-        loader: () => fetch('http://localhost:5003/addpaintings')
+        loader: () => fetch('https://arts-painting-website-server.vercel.app/addpaintings')
       },
       {
         path:'/allPaintings/:id',
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       {
         path:'/myArts/:id',
         element:<PrivsteRoute><UpdateCart></UpdateCart></PrivsteRoute>,
-        loader: ({params}) => fetch(`http://localhost:5003/myArts/${params.id}`)
+        loader: ({params}) => fetch(`https://arts-painting-website-server.vercel.app/myArts/${params.id}`)
 
       },
       {

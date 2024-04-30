@@ -1,6 +1,13 @@
 
+import { Typewriter } from 'react-simple-typewriter'
 
 const Artist = ({artist}) => {
+    
+    
+  
+
+  
+  
   return (
     <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-slate-300 dark:text-gray-800">
     <img src={artist.image_url}alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />

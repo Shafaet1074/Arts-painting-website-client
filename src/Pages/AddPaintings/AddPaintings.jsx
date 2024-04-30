@@ -24,7 +24,7 @@ const AddPaintings = () => {
     const info={paintingname,SubcategoryName,price,Rating,Customization,ProcessingTime,photo,ShortDescription,email}
     console.log(info);
 
-    fetch('http://localhost:5003/addpaintings',{
+    fetch('https://arts-painting-website-server.vercel.app/addpaintings',{
       method: 'POST',
       headers:{
         'content-type' : 'application/json'

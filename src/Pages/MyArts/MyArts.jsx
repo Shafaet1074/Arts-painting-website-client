@@ -14,7 +14,7 @@ const MyArts = () => {
   const [sortedNoItems,setSortedNoitems] =useState(items);
   console.log(user.email);
   useEffect(()=>{
-    fetch(`http://localhost:5003/addpaintings/${user?.email}`)
+    fetch(`https://arts-painting-website-server.vercel.app/addpaintings/${user?.email}`)
     .then(res =>res.json())
     .then(data=>{
       setItem(data);
@@ -40,7 +40,7 @@ const handleNo= () => {
       setSortedNoitems(newNoItems);
       console.log(sortedNoItems);
       setItem(sortedNoItems);
-console.log(items);
+      console.log(items);
 }
  
 const handleDelete = (id) =>{
@@ -57,7 +57,7 @@ const handleDelete = (id) =>{
   }).then((result) => {
     if (result.isConfirmed) {
     
-      fetch(`http://localhost:5003/delete/${id}`,{
+      fetch(`https://arts-painting-website-server.vercel.app/delete/${id}`,{
     method:"DELETE",
   })
   .then((res)=> res.json())

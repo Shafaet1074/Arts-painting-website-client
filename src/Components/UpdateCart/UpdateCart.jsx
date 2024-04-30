@@ -10,7 +10,7 @@ const UpdateCart = () => {
   const painting= useLoaderData();
   const {paintingname,SubcategoryName,price,Rating,Customization,ProcessingTime,photo,ShortDescription,_id} =painting;
   // useEffect(() => {
-  //   fetch(`http://localhost:5003/myArts/${id}`)
+  //   fetch(`https://arts-painting-website-server.vercel.app/myArts/${id}`)
   //   .then(res=> res.json())
   //   .then(data => {
   //     setProduct(data)
@@ -34,7 +34,7 @@ const UpdateCart = () => {
    
     const Updatedinfo={paintingname,SubcategoryName,price,Rating,Customization,ProcessingTime,photo,ShortDescription}
 
-    fetch(`http://localhost:5003/myArts/${_id}`,{
+    fetch(`https://arts-painting-website-server.vercel.app/myArts/${_id}`,{
       method:'PUT',
       headers:{
         'content-type' : 'application/json'
