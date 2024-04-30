@@ -1,0 +1,19 @@
+
+   [
+    {
+      "name": "Emily Carr",
+      "description": "Emily Carr, a Canadian artist, is celebrated for her stunning depictions of the Pacific Northwest forests.",
+      "image_url": "https://i.ibb.co/SR1Nzbk/pexels-cottonbro-4098273.jpg"
+    },
+    {
+      "name": "Albert Bierstadt",
+      "description": "Albert Bierstadt was an American painter known for his grandiose landscapes, including magnificent scenes of the American West.",
+      "image_url": "https://i.ibb.co/vqFdyJB/pexels-cottonbro-4100672.jpg"
+    },
+    {
+      "name": "Claude Monet",
+      "description": "Claude Monet, the French Impressionist master, captured the enchanting beauty of forests in his iconic paintings. ",
+      "image_url": "https://i.ibb.co/vY4nGj7/pexels-cottonbro-4101136.jpg"
+    }
+  ]
+

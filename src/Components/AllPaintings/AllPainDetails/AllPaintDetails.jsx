@@ -18,15 +18,15 @@ const AllPaintDetails = () => {
   return (
 
 
-    <section className="dark:text-gray-800 p-8 space-y-8">
+    <section className="dark:text-gray-800 md:p-8 p-5 space-y-8 ">
       <h1 className="text-center text-5xl font-light text-gray-950 ">  Artwork Details
 </h1>
-    <div className="container max-w-6xl  mx-auto rounded-lg  flex ">
+    <div className=" rounded-lg  md:flex ">
     
-      <div className="w-1/2">
+      <div className="lg:w-1/2">
       <img src={painting.photo}  />
       </div>
-        <div className="w-1/2 p-6 space-y-4
+        <div className="lg:w-1/2 p-6 space-y-4
          ">
           <h1  className="text-2xl font-light md:text-5xl group-hover:underline group-focus:underline text-violet-500 ">{painting.SubcategoryName} </h1>
            <hr className="h-1 text-black bg-black"></hr>

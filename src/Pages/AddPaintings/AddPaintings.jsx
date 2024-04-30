@@ -54,7 +54,7 @@ const AddPaintings = () => {
     //   </div>
 
     //   <div className='w-4/6 p-10'>
-     <div className='p-20'>
+     <div className='lg:p-20 p-5'>
        <div className="bg-[#c2beec] shadow-lg rounded-lg p-24 space-y-4 ">
       <h2 className="text-3xl font-extrabold">Add Paintings</h2>
       <form onSubmit={handleAddPaintings}>

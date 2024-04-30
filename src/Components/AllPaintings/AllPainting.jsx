@@ -10,11 +10,11 @@ const AllPainting = ({painting}) => {
 
     <div className=" md:p-10 p-2 ">
       
-    <div className="card card-side  shadow-xl bg-violet-200">
-   <div className="w-1/2">
+    <div className="md:flex shadow-xl bg-violet-200">
+   <div className="lg:w-1/2">
    <figure><img  className="h-full" src={photo} alt="Movie"/></figure>
    </div>
-    <div className="card-body w-1/2 hover:bg-violet-400 hover:text-white hover:rounded-xl ">
+    <div className="card-body lg:w-1/2 hover:bg-violet-400 hover:text-white hover:rounded-xl ">
     <h1 className="text-3xl font-light pb-5">{SubcategoryName}</h1>
       <h2 className="card-title ">{paintingname}</h2>
       <div className="space-y-3">
