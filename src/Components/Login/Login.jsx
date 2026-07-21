@@ -1,43 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import img from "../../assets/4957136.jpg";
-import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Firebase/FirbeaseProvider/FirebaseProvider";
 import { toast } from "react-toastify";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import img from "../../assets/4957136.jpg";
 
 const Login = () => {
   const { LoginUser, googleLogIn, githubLogIn } = useContext(AuthContext);
-
-  // Set initial theme on page load
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const preferredTheme =
-      savedTheme ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-
-    // Apply theme to the body immediately
-    document.body.classList.add(preferredTheme);
-    // Save the theme to localStorage for persistence
-    localStorage.setItem("theme", preferredTheme);
-
-    // Listen for system theme changes
-    const darkModeListener = (e) => {
-      const newTheme = e.matches ? "dark" : "light";
-      document.body.classList.remove(savedTheme); // Remove old theme
-      document.body.classList.add(newTheme); // Apply new theme
-      localStorage.setItem("theme", newTheme); // Save to localStorage
-    };
-
-    const themeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    themeMediaQuery.addEventListener("change", darkModeListener);
-
-    // Clean up listener on component unmount
-    return () => {
-      themeMediaQuery.removeEventListener("change", darkModeListener);
-    };
-  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -47,97 +16,119 @@ const Login = () => {
 
     LoginUser(email, password)
       .then(() => {
-        toast.success("Login successful!");
+        toast.success("Welcome back to ArtisanHaven.");
       })
       .catch((error) => {
-        toast.warning(error.message);
+        toast.error(error.message);
       });
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row items-center justify-center min-h-screen px-4 py-10 ">
-      {/* Left Section */}
-      <div className="w-full md:w-1/2 flex justify-center items-center">
+    <div className="flex md:p-20 p-2   min-h-screen bg-[#FAF9F6] dark:bg-[#0F1014] text-zinc-900 dark:text-zinc-100 transition-colors duration-500 font-sans">
+      
+      {/* Left Section: Immersive Art Showcase */}
+      <div className="hidden rounded-bl-2xl rounded-tl-2xl shadow-lg  lg:block lg:w-1/2 relative overflow-hidden bg-zinc-200 dark:bg-zinc-900">
         <img
-          className="w-full max-w-lg mt-6 md:mt-0 rounded"
           src={img}
-          alt="Login Illustration"
+          alt="Gallery Exhibition"
+          className="absolute inset-0 w-full h-full object-cover  "
         />
+        {/* Subtle vignette overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+        
+        <div className="absolute bottom-16 left-16 text-white pointer-events-none">
+          <h2 className="font-serif text-5xl mb-3 drop-shadow-lg">ArtisanHaven</h2>
+          <p className="font-light tracking-widest uppercase text-sm opacity-80 drop-shadow-md">
+            Artist Portal & Exhibition Management
+          </p>
+        </div>
       </div>
 
-      {/* Right Section */}
-      <div className="w-full md:w-1/2 max-w-lg shadow-md rounded-lg p-8 space-y-6 bg-white dark:bg-gray-700">
-        <h1 className="text-3xl font-bold text-gray-700 dark:text-gray-100 text-center">
-          Welcome Back!
-        </h1>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div className="flex flex-col">
-            <label
-              htmlFor="email"
-              className="text-lg font-medium text-gray-600 dark:text-gray-300"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Enter your email"
-              className="mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:text-gray-100"
-            />
+      {/* Right Section: Minimalist Form */}
+      <div className="w-full border border-zinc-300 dark:border-zinc-700 rounded-br-2xl rounded-tr-2xl shadow-lg lg:w-1/2 flex items-center justify-center p-8 sm:p-16 md:p-24 relative">
+        <div className="w-full max-w-md space-y-12 relative z-10">
+          
+          {/* Header */}
+          <div className="space-y-3">
+            <h1 className="text-4xl md:text-5xl font-serif">Curator Access</h1>
+            <p className="text-zinc-500 dark:text-zinc-400 font-light text-lg">
+              Sign in to manage your portfolio and exhibitions.
+            </p>
           </div>
 
-          <div className="flex flex-col">
-            <label
-              htmlFor="password"
-              className="text-lg font-medium text-gray-600 dark:text-gray-300"
+          <form onSubmit={handleLogin} className="space-y-8">
+            
+            {/* Elegant Inputs */}
+            <div className="relative group">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                required
+                className="w-full bg-transparent border-b border-zinc-300 dark:border-zinc-700 py-3 text-lg focus:outline-none focus:border-zinc-900 dark:focus:border-white transition-colors placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+              />
+            </div>
+
+            <div className="relative group">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                required
+                className="w-full bg-transparent border-b border-zinc-300 dark:border-zinc-700 py-3 text-lg focus:outline-none focus:border-zinc-900 dark:focus:border-white transition-colors placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+              />
+            </div>
+
+            {/* Monochrome Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-zinc-900 dark:bg-white text-white dark:text-black uppercase tracking-widest text-sm font-semibold py-4 mt-4 hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-lg shadow-zinc-900/20 dark:shadow-white/10"
             >
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Enter your password"
-              className="mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:text-gray-100"
-            />
+              Sign In
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div className="flex items-center gap-4 py-2">
+            <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800"></div>
+            <span className="text-xs uppercase tracking-widest text-zinc-400 font-semibold">Or continue with</span>
+            <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800"></div>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition-all"
-          >
-            Sign In
-          </button>
-        </form>
+          {/* Social Logins */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={googleLogIn}
+              type="button"
+              className="flex-1 flex items-center justify-center gap-3 py-3 border border-zinc-300 dark:border-zinc-700 rounded-none hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors font-medium text-sm"
+            >
+              <FaGoogle className="text-lg" />
+              <span>Google</span>
+            </button>
+            
+            <button
+              onClick={githubLogIn}
+              type="button"
+              className="flex-1 flex items-center justify-center gap-3 py-3 border border-zinc-300 dark:border-zinc-700 rounded-none hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors font-medium text-sm"
+            >
+              <FaGithub className="text-lg" />
+              <span>GitHub</span>
+            </button>
+          </div>
 
-        <div className="flex items-center my-6">
-          <div className="flex-1 h-px bg-gray-300"></div>
-          <p className="px-3 text-gray-500 dark:text-gray-300">or login with</p>
-          <div className="flex-1 h-px bg-gray-300"></div>
+          {/* Footer Link */}
+          <p className="text-center text-zinc-500 dark:text-zinc-400 font-light mt-8">
+            Don't have an account yet?{" "}
+            <Link
+              to="/register"
+              className="text-zinc-900 dark:text-white font-medium border-b border-zinc-900 dark:border-white pb-0.5 hover:opacity-70 transition-opacity ml-1"
+            >
+              Apply as an Artist
+            </Link>
+          </p>
         </div>
-
-        <div className="flex justify-center gap-4">
-          <button
-            onClick={googleLogIn}
-            className="flex items-center justify-center w-10 h-10 bg-red-500 text-white rounded-full hover:bg-red-600 transition-all"
-          >
-            <FaGoogle />
-          </button>
-          <button
-            onClick={githubLogIn}
-            className="flex items-center justify-center w-10 h-10 bg-gray-800 text-white rounded-full hover:bg-gray-900 transition-all"
-          >
-            <FaGithub />
-          </button>
-        </div>
-
-        <p className="text-center text-gray-600 dark:text-gray-300">
-          Don’t have an account?
-          <Link to="/register" className="text-blue-500 hover:underline ml-1">
-            Register
-          </Link>
-        </p>
       </div>
     </div>
   );
