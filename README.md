@@ -1,6 +1,6 @@
-# Website Name: Dainty Syrniki
+# Website Name: ArtisanHaven
 
-Live Link: [https://662158d4ba85411bfd46ef5d--dainty-syrniki-00a613.netlify.app/]
+Live Link: [https://incomparable-parfait-957e61.netlify.app/]
 
 ## Description
 This project is a website that offers a platform to browse commercial estates. It incorporates various features and functionalities aimed at providing users with a seamless experience.
