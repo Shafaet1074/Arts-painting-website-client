@@ -1,4 +1,5 @@
 # 🎨 ArtisanHaven – Art & Painting Exhibition Platform
+🌐 Live Demo: https://incomparable-parfait-957e61.netlify.app/
 
 ArtisanHaven is a full-stack web application designed to showcase and manage creative artwork. It provides a digital gallery where visitors can explore paintings, while registered artists can submit, update, and manage their own artwork.
 
